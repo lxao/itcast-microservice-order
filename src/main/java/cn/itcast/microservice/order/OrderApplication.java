@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableDiscoveryClient //申明这是一个eureka客户端
 @SpringBootApplication
 public class OrderApplication {
-	
+
 	@Bean // 向Spring容器中定义RestTemplate对象
 	@LoadBalanced //开启负载均衡
 	public RestTemplate restTemplate(){

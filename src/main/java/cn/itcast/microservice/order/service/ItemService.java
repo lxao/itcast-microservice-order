@@ -43,10 +43,10 @@ public class ItemService {
 //		return this.restTemplate.getForObject("http://" + url + "/item/" + id, Item.class);
 //	}
 
-//	public Item queryItemById(Long id) {
-//		String serviceId = "itcast-microservice-item";
-//		return this.restTemplate.getForObject("http://" + serviceId + "/item/" + id, Item.class);
-//	}
+	public Item queryItemById(Long id) {
+		String serviceId = "itcast-microservice-item";
+		return this.restTemplate.getForObject("http://" + serviceId + "/item/" + id, Item.class);
+	}
 
 //	@HystrixCommand(fallbackMethod = "queryItemByIdFallbackMethod") // 进行容错处理
 //	public Item queryItemById(Long id) {
@@ -57,10 +57,10 @@ public class ItemService {
 	@Autowired
 	private ItemFeignClient itemFeignClient;
 
-	@HystrixCommand(fallbackMethod = "queryItemByIdFallbackMethod") // 进行容错处理
-	public Item queryItemById(Long id) {
-		return this.itemFeignClient.queryItemById(id);
-	}
+//	@HystrixCommand(fallbackMethod = "queryItemByIdFallbackMethod") // 进行容错处理
+//	public Item queryItemById(Long id) {
+//		return this.itemFeignClient.queryItemById(id);
+//	}
 
 	public Item queryItemByIdFallbackMethod(Long id){ // 请求失败执行的方法
 		return new Item(id, "查询商品信息出错!", null, null, null);
